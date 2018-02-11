@@ -17,7 +17,8 @@
 Selenium Project for SQA Boot Camp Programs. 
 
 **Drivers**
-*Chrome Driver 2.35 or higher.
-*geckodriver-v0.19.1-win64
+
+Chrome Driver 2.35 or higher.
+geckodriver-v0.19.1-win64
 
 [CurtManning](https://github.com)
