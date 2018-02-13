@@ -15,12 +15,13 @@ public class GlobalDataStore {
 	public static String ChromeDriver;
 
 	public void initParameters() {
+		
 		String baseDir = System.getProperty("user.dir");
 		String propFile = "selenium.properties";
 		FileInputStream fis = null;
 
 		try {
-			//../../SQAToolsAutomation/SQASeleniumProject
+		
 			fis = new FileInputStream(baseDir + "/" + "src/test/resources/" + propFile);
 
 			System.out.println("fis = " + fis);
@@ -34,6 +35,7 @@ public class GlobalDataStore {
 		} catch (FileNotFoundException e) {
 
 			System.out.println("File Not Found " + e.getMessage());
+			
 		} catch (IOException e) {
 
 			System.out.println("IO Exception " + e.getMessage());

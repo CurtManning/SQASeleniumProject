@@ -1,7 +1,7 @@
 # SQASeleniumProject
 ## SQA Solution Selenium Project
 
-*Default Structure for A Basic Project*
+*Selenium Project using Page Object Model*
 
 **Java 8**
 
