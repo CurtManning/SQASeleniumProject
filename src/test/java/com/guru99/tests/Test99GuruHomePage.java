@@ -1,31 +1,32 @@
-package com.facebook.tests;
+package com.guru99.tests;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
 
 import com.examples.config.GlobalDataStore;
-import com.examples.pages.FaceBookHomePage;
+import com.guru.pages.GuruHomePage;
+import com.guru.pages.SignInPage;
+import com.guru99.framework.Guru99WebDriverFactory;
 
-public class TestHomePage {
+public class Test99GuruHomePage {
 	GlobalDataStore gds = new GlobalDataStore();
+	String Username;
+	String Psswd;
 	String GecKoDriver;
 	WebDriver driver = null;
 	String HomePage;
+	String HomePageLaunch;
 	String ChromeDriver;
-	FaceBookHomePage FBPage;
+	SignInPage GBPage;
+	GuruHomePage GBHomePage;
 
 	/**
 	 * Initilaizes the gecko driver object and all the variables needed.
@@ -37,8 +38,12 @@ public class TestHomePage {
 
 		System.out.println(" The Browser Name " + BrowserName);
 		gds.initParameters();
+	
+		Username = GlobalDataStore.UserName;
+		Psswd = GlobalDataStore.Password;
 		GecKoDriver = GlobalDataStore.GeckoDriver_WIN;
 		HomePage = GlobalDataStore.HomePage;
+
 		System.out.println("The HomePage " + HomePage);
 		System.out.println(" The GeckoDriver " + GecKoDriver);
 
@@ -66,28 +71,4 @@ public class TestHomePage {
 
 	}
 
-	@Test
-	public void testFaceBookTitleOnPageLoad() {
-
-		// get the actual value of the title
-		String expectedTitle = "Facebook - Log In or Sign Up";
-		String actualTitle = "";
-
-		// driver.get(HomePage);
-		FBPage = new FaceBookHomePage(driver);
-		FBPage.launchHomePage(HomePage);
-		actualTitle = FBPage.getLoginTitle();
-
-		/*
-		 * compare the actual title of the page with the expected one and print the
-		 * result as "Passed" or "Failed".
-		 */
-		Assert.assertEquals(expectedTitle, actualTitle);
-	}
-
-	@AfterClass
-	public void afterClass( ) {
-		// Close
-		driver.close();
-	}
 }

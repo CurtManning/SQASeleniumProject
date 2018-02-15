@@ -10,14 +10,19 @@ public class GlobalDataStore {
 	private Properties configFile = new Properties();
 	public static String HomePage;
 	public static String UserName;
+//	public static String Pd;
+	public static String GeckoDriver_MAC;
+	public static String GeckoDriver_WIN;
+	public static String ChromeDriver_MAC;
+	public static String ChromeDriver_WIN;
+	public static String Guru99HomePage;
 	public static String Password;
-	public static String GeckoDriver;
-	public static String ChromeDriver;
 
 	public void initParameters() {
 		
 		String baseDir = System.getProperty("user.dir");
 		String propFile = "selenium.properties";
+		//String propFile = "gurubank.properties";
 		FileInputStream fis = null;
 
 		try {
@@ -27,10 +32,14 @@ public class GlobalDataStore {
 			System.out.println("fis = " + fis);
 
 			configFile.load(fis);
-
-			GeckoDriver = configFile.getProperty("GECKO_DRIVER");
-			HomePage = configFile.getProperty("BASE_URL");
-			ChromeDriver = configFile.getProperty("CHROME_DRIVER");
+			UserName = configFile.getProperty("USERNAME");
+			Password = configFile.getProperty("PASSWORD");
+			GeckoDriver_MAC=configFile.getProperty("GECKO_DRIVER_MAC");
+		      GeckoDriver_WIN=configFile.getProperty("GECKO_DRIVER_WIN");
+		      HomePage=configFile.getProperty("BASE_URL");
+		      ChromeDriver_MAC=configFile.getProperty("CHROME_DRIVER_MAC");
+		      ChromeDriver_WIN=configFile.getProperty("CHROME_DRIVER_WIN");
+		      Guru99HomePage=configFile.getProperty("GURU99_HOMEPAGE");
 
 		} catch (FileNotFoundException e) {
 
