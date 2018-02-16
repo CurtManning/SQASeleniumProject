@@ -37,7 +37,7 @@ public class TestHomePage {
 
 		System.out.println(" The Browser Name " + BrowserName);
 		gds.initParameters();
-		GecKoDriver = GlobalDataStore.GeckoDriver_WIN;
+		GecKoDriver = GlobalDataStore.GeckoDriver;
 		HomePage = GlobalDataStore.HomePage;
 		System.out.println("The HomePage " + HomePage);
 		System.out.println(" The GeckoDriver " + GecKoDriver);
@@ -48,8 +48,8 @@ public class TestHomePage {
 			driver = new FirefoxDriver();
 		} else if (BrowserName.equalsIgnoreCase("chrome")) {
 
-			System.out.println(" The chrome Driver " + GlobalDataStore.ChromeDriver_WIN);
-			System.setProperty("webdriver.chrome.driver", GlobalDataStore.ChromeDriver_WIN);
+			System.out.println(" The chrome Driver " + GlobalDataStore.ChromeDriver);
+			System.setProperty("webdriver.chrome.driver", GlobalDataStore.ChromeDriver);
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("disable-infobars");
 			options.addArguments("--start-maximized");
