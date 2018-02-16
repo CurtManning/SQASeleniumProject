@@ -4,7 +4,7 @@
 	<parameter name="BrowserName" value="Chrome" />
 	<test name="SimpleParamExample">
 		<classes>
-			<class name="com.facebook.tests.TestHomePage" />
+			<class name="com.guru99.tests.Test99GuruHomePage" />
 		</classes>
 	</test>
 </suite>
