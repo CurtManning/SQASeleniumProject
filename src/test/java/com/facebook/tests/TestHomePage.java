@@ -24,6 +24,7 @@ public class TestHomePage {
 	String GecKoDriver;
 	WebDriver driver = null;
 	String HomePage;
+	String Guru99HomePage;
 	String ChromeDriver;
 	FaceBookHomePage FBPage;
 
@@ -38,8 +39,8 @@ public class TestHomePage {
 		System.out.println(" The Browser Name " + BrowserName);
 		gds.initParameters();
 		GecKoDriver = GlobalDataStore.GeckoDriver;
-		HomePage = GlobalDataStore.HomePage;
-		System.out.println("The HomePage " + HomePage);
+		Guru99HomePage = GlobalDataStore.Guru99HomePage;
+		System.out.println("The HomePage " + Guru99HomePage);
 		System.out.println(" The GeckoDriver " + GecKoDriver);
 
 		if (BrowserName.equalsIgnoreCase("firefox")) {

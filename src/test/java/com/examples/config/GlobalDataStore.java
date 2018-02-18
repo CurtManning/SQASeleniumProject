@@ -27,7 +27,7 @@ public class GlobalDataStore {
 		
 		try{
 			
-			///Users/srinivasnayani/Documents/SQAToolsAutomation/SQASeleniumProject/src/test/resources/selelium.properties
+			//C:\Users\CurtA\SQA-Workspace\SQASeleniumProject\src\test\resources\selenium.properties
 			fis=new FileInputStream(baseDir+ "/" +"src/test/resources/" +propFile);			
 		    configFile.load(fis);
 			
@@ -40,6 +40,10 @@ public class GlobalDataStore {
 		    Guru99HomePage=configFile.getProperty("GURU99_HOMEPAGE");
 
 		    GeckoDriver=configFile.getProperty("GECKO_DRIVER");
+		    UserName=configFile.getProperty("USERNAME");
+		    Password=configFile.getProperty("PASSWORD");
+		    
+		
 			
 	    }catch(FileNotFoundException e){
 	    	

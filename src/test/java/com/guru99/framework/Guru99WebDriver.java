@@ -11,7 +11,7 @@ public interface Guru99WebDriver {
 	   
 	   void clickElement(WebElement element);
 	 
-	 
+	   void acceptPopAlert();
 	   WebElement FindElement(By element );
 	    /**
 	     * Quits the web driver.

@@ -55,4 +55,65 @@ public class Test99GuruHomePage {
 		// id : mgr123"));
 
 	}
+	@Test
+	public void test_StepsToGenerateAccess() {
+
+		if (HomePageLaunch == true) {
+			String loginPageTitle = objHomePage.getStepsToGenerateAccess();
+			System.out.println(" The login Title " + loginPageTitle);
+
+			Assert.assertTrue(loginPageTitle.contains("Steps To Generate Access"));
+		}
+
+		// Assert.assertTrue(objHomePage.getHomePageDashboardUserName().toLowerCase().contains("manger
+		// id : mgr123"));
+
+	}
+	
+	@Test
+	public void test_Link_Enabled() {
+
+		if (HomePageLaunch == true) {
+			
+			System.out.println(" The login Title " + objHomePage.getLink());
+
+			Assert.assertTrue(objHomePage.getLink());
+		}
+
+		// Assert.assertTrue(objHomePage.getHomePageDashboardUserName().toLowerCase().contains("manger
+		// id : mgr123"));
+
+	}
+	
+	@Test
+	public void test_Login_Button() {
+
+		if (HomePageLaunch == true) {
+			
+			System.out.println(" The login button is " + objHomePage.getLoginButton());
+
+			Assert.assertTrue(objHomePage.getLoginButton());
+		}
+
+		// Assert.assertTrue(objHomePage.getHomePageDashboardUserName().toLowerCase().contains("manger
+		// id : mgr123"));
+
+	}
+	
+	@Test
+	public void test_Reset_Button() {
+
+		if (HomePageLaunch == true) {
+			
+			System.out.println(" The login button is " + objHomePage.getResetButton());
+
+			Assert.assertTrue(objHomePage.getResetButton());
+		}
+
+		// Assert.assertTrue(objHomePage.getHomePageDashboardUserName().toLowerCase().contains("manger
+		// id : mgr123"));
+
+	}
+	
+	//getLink()
 }

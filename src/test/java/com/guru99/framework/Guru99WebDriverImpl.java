@@ -2,6 +2,7 @@ package com.guru99.framework;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -95,6 +96,55 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 		}
 	}
 
+	public void sendKeys(WebElement element, String name) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+
+		clickableElement.sendKeys(name);
+
+	}
+
+	public void clickElement(WebElement element) {
+		 
+		 System.out.println("START: click Element value "+element);
+		 WebDriverWait wait = new WebDriverWait(driver, 15);
+		 try {
+		        //System.out.println("The element is " +element.getText());
+		        
+		        //Wait.someSec(GlobalDataStore.WAIT_TIME);
+		  WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+		  clickableElement.click();
+		  
+		 } catch (StaleElementReferenceException e) {
+
+		  System.out.println("Element  " + element.getText() + "Does not exist " + e.getStackTrace());
+
+		 } catch (NoSuchElementException e) {
+
+		  System.out.println("Element  " + element.getText() + "Does not exist " + e.getStackTrace());
+		 } catch (Exception e) {
+		  
+		  System.out.println("Element does not exist " + e.getStackTrace());
+		 }
+	}
+	
+	public void acceptPopAlert() {
+		 
+		 WebDriverWait wait = new WebDriverWait(driver,15 /* timeout in seconds */);
+
+		 if (wait.until(ExpectedConditions.alertIsPresent()) == null)
+		  System.out.println("alert was not present");
+
+		 else {
+
+		  System.out.println("alert was present");
+		  Alert alert = driver.switchTo().alert();
+		  alert.getText();
+		  alert.accept();
+
+		 }
+
+		}
 	@Override
 	public Boolean navigateTo(final String urlString) {
 
@@ -145,18 +195,6 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 			this.driver = null;
 			// LOGGER.info("Selenium Web Driver successfully shutdown.");
 		}
-
-	}
-
-	@Override
-	public void sendKeys(WebElement element, String name) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void clickElement(WebElement element) {
-		// TODO Auto-generated method stub
 
 	}
 
