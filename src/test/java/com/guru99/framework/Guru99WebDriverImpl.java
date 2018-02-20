@@ -97,7 +97,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	}
 
 	public void sendKeys(WebElement element, String name) {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 15);
 		WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
 
 		clickableElement.sendKeys(name);
@@ -107,9 +107,9 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	public void clickElement(WebElement element) {
 		 
 		 System.out.println("START: click Element value "+element);
-		 WebDriverWait wait = new WebDriverWait(driver, 15);
+		 WebDriverWait wait = new WebDriverWait(driver, 20);
 		 try {
-		        //System.out.println("The element is " +element.getText());
+		       // System.out.println("The element is " +element.getText());
 		        
 		        //Wait.someSec(GlobalDataStore.WAIT_TIME);
 		  WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -130,7 +130,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	
 	public void acceptPopAlert() {
 		 
-		 WebDriverWait wait = new WebDriverWait(driver,15 /* timeout in seconds */);
+		 WebDriverWait wait = new WebDriverWait(driver,20 /* timeout in seconds */);
 
 		 if (wait.until(ExpectedConditions.alertIsPresent()) == null)
 		  System.out.println("alert was not present");
@@ -158,7 +158,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 
 			// PageFactory.initElements(driver, TMXWebDriverImpl.class);
 
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 			this.driver.get(navigateUrl);
 			String CurrrentUrl = getCurrentUrl();
@@ -201,9 +201,12 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	@Override
 	public WebElement FindElement(By element) {
 		System.out.println(" Coming in Find Element");
-		// WebDriverWait wait = new WebDriverWait(driver, 10);
-		// WebElement clickableElement =
-		// wait.until(ExpectedConditions.elementToBeClickable(element));
+	//	WebDriverWait wait = new WebDriverWait(driver, 10);
+
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+	//	WebElement clickableElement =
+	//	 wait.until(ExpectedConditions.elementToBeClickable(element));
 		if (driver.findElement(element).isDisplayed()) {
 			System.out.println("The element exists");
 			return driver.findElement(element);

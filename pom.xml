@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>SQASolution</groupId>
-  <artifactId>SQASeleniumProject</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  	<name>SQA-Selenium-Project</name>
-  	<build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>SQASolution</groupId>
+	<artifactId>SQASeleniumProject</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SQA-Selenium-Project</name>
+	<build>
 		<!-- Source directory configuration -->
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
@@ -18,8 +19,8 @@
 
 					<suiteXmlFiles>
 
-						<!-- <suiteXmlFile>src/test/resources/w2d4-test-suite.xml</suiteXmlFile>  -->
-							<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+						<!-- <suiteXmlFile>src/test/resources/w2d4-test-suite.xml</suiteXmlFile> -->
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 
 				</configuration>
@@ -33,6 +34,31 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+                <execution>
+                    <id>auto-clean</id>
+                    <phase>clean</phase>
+                    <goals>
+                        <goal>clean</goal>
+                    </goals>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>${basedir}</directory>
+                                <includes>
+                                <include>**/log/** </include>
+                                <include>**/target/** </include>
+                               </includes>
+                            </fileset>
+
+                        </filesets>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -47,6 +73,11 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.8.1</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
 		</dependency>
 	</dependencies>
 </project>

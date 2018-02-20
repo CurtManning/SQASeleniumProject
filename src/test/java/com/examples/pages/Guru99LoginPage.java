@@ -1,9 +1,9 @@
 package com.examples.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
+
 import org.testng.Reporter;
 
 import com.guru99.framework.Guru99WebDriverImpl;
@@ -23,27 +23,53 @@ public class Guru99LoginPage {
 	By passwordGuru = By.name("password");
 	By login = By.name("btnLogin");
 	By logOut = By.linkText("Log out");
-
+	By seleniumDropdown = By.partialLinkText("Selenium");
+	By tableDemo = By.linkText("Table Demo");
+	//By clickTableDemo = By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[3]/a[contains(text(),'Table Demo')]");
+	
 	GlobalDataStore gds = new GlobalDataStore();
 	WebDriver driverInstance;
 
+	public static String LogCategory;
+	public static Logger logger;
+	public void setLogCategory(String LogFile) {
+
+		LogCategory = LogFile;
+
+		logger = Logger.getLogger(LogCategory);
+
+	}
+	
+	public String getURL() {
+		String currentUrl = driver.getCurrentUrl();
+		logger.info("url " + currentUrl);
+		return currentUrl;
+	}
+
+	public void clickSeleniumDropDown() {
+		logger.info("clickSeleniumDropDown ");
+		driver.clickElement(driver.FindElement(seleniumDropdown));
+	}
+
 	public String getHomePageDashboardName() {
 
-		System.out.println("comming here");
-		Reporter.log("Guru99HomePage getHomePageDashboard " + driver.FindElement(homePageUserName).getText(), true);
+		String HomePageName = driver.FindElement(homePageUserName).getText();
+		logger.info("getHomePageDashboard " + HomePageName);
+		Reporter.log(" getHomePageDashboard " + HomePageName, true);
 		// System.out.println(" The Text
 		// "+driver.FindElement(homePageUserName).getText());
 		// driver.FindElement(homePageUserName).click();
-		return driver.FindElement(homePageUserName).getText();
+		return HomePageName;
 	}
 
 	public void setWebDriver(Guru99WebDriverImpl webDriver) {
-
+		logger.info("setWebDriver ");
 		this.driver = webDriver;
 
 	}
 
 	public void setUserName(String strUserName) {
+		logger.info("setUserName " + strUserName);
 		driver.FindElement(userName).sendKeys(strUserName);
 
 	}
@@ -51,7 +77,7 @@ public class Guru99LoginPage {
 	// Set password in password textbox
 
 	public void setPassword(String strPassword) {
-
+		logger.info("setPassword ");
 		driver.FindElement(passwordGuru).sendKeys(strPassword);
 
 	}
@@ -59,14 +85,16 @@ public class Guru99LoginPage {
 	// Click on login button
 
 	public void clickLogin() {
-
-		// driver.FindElement(login).click();
+		logger.info(" clickLogin ");
+		Reporter.log("Guru99HomePage clickLogin ", true);
 		driver.clickElement(driver.FindElement(login));
 
 	}
 
 	public void loginToGuru(String strUserName, String strPasword) {
 
+		logger.info(" loginToGuru  ");
+		Reporter.log("Guru99HomePage loginToGuru ", true);
 		// Fill user name
 		this.setUserName(strUserName);
 		// Fill password
@@ -77,28 +105,33 @@ public class Guru99LoginPage {
 	}
 
 	public void clickLogout() {
-
-		// driver.FindElement(logOut).click();
+		logger.info(" clickLogout  ");
+		Reporter.log("Guru99HomePage clickLogout ", true);
 		driver.clickElement(driver.FindElement(logOut));
 		driver.acceptPopAlert();
 
 	}
-	
+
 	public boolean getLogoutButton() {
 
-		System.out.println("comming here");
-		Reporter.log("Guru99HomePage getlink is pressent : " + driver.FindElement(logOut).isEnabled(), true);
-	
-		return driver.FindElement(logOut).isEnabled();
+		boolean logoutEnabled = driver.FindElement(logOut).isEnabled();
+		logger.info(" getLogoutButton enabled: " + logoutEnabled);
+		Reporter.log("Guru99HomePage getlink is pressent : " + logoutEnabled, true);
+
+		return logoutEnabled;
 	}
-	
+
 	public boolean checkForStepsToGenerateAccess() {
 
-		System.out.println("comming here");
-		Reporter.log("Guru99HomePage StepsToGenerateAccess is pressent : " + driver.FindElement(stepsToGenerateAccess).isEnabled(), true);
-	
-		return driver.FindElement(stepsToGenerateAccess).isEnabled();
+		boolean stepsToGenerateEnabled = driver.FindElement(stepsToGenerateAccess).isEnabled();
+		Reporter.log("Guru99HomePage StepsToGenerateAccess is pressent : " + stepsToGenerateEnabled, true);
+		logger.info(" StepsToGenerateAccess is pressent : " + stepsToGenerateEnabled);
+		return stepsToGenerateEnabled;
 	}
 
+	public void clickTableDemo() {
+		logger.info("clickTableDemo");
+		driver.clickElement(driver.FindElement(tableDemo));
+	}
 
 }

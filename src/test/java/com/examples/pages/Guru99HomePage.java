@@ -28,7 +28,6 @@ public class Guru99HomePage {
 
 	public String getHomePageDashboardUserName() {
 
-		System.out.println("comming here");
 		Reporter.log("Guru99HomePage getHomePageDashboard " + driver.FindElement(homePageUserName).getText(), true);
 		// System.out.println(" The Text
 		// "+driver.FindElement(homePageUserName).getText());
@@ -38,7 +37,6 @@ public class Guru99HomePage {
 	
 	public String getStepsToGenerateAccess() {
 
-		System.out.println("comming here");
 		Reporter.log("Guru99HomePage getStepsToGenerateAccess " + driver.FindElement(stepsToGenerateAccess).getText(), true);
 		// System.out.println(" The Text
 		// "+driver.FindElement(homePageUserName).getText());
@@ -47,7 +45,6 @@ public class Guru99HomePage {
 	}
 	public boolean getLink() {
 
-		System.out.println("comming here");
 		Reporter.log("Guru99HomePage getlink is pressent : " + driver.FindElement(linkTest).isEnabled(), true);
 
 		return driver.FindElement(linkTest).isEnabled();
@@ -55,7 +52,6 @@ public class Guru99HomePage {
 	
 	public boolean getLoginButton() {
 
-		System.out.println("comming here");
 		Reporter.log("Guru99HomePage getlink is pressent : " + driver.FindElement(loginButtonTest).isEnabled(), true);
 
 		return driver.FindElement(loginButtonTest).isEnabled();
@@ -63,7 +59,6 @@ public class Guru99HomePage {
 	
 	public boolean getResetButton() {
 
-		System.out.println("comming here");
 		Reporter.log("Guru99HomePage getlink is pressent : " + driver.FindElement(resetButtonTest).isEnabled(), true);
 
 		return driver.FindElement(resetButtonTest).isEnabled();
