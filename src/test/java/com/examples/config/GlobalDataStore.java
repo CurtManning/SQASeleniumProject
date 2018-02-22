@@ -20,6 +20,7 @@ public class GlobalDataStore {
 	public static String ChromeDriver_MAC;
 	public static String ChromeDriver_WIN;
 	public static String ChromeDriver;
+	public static String TestDataFile;
 	public static String LogCategory;
 	public static Logger logger;
 	
@@ -56,6 +57,7 @@ public class GlobalDataStore {
 		    GeckoDriver=configFile.getProperty("GECKO_DRIVER");
 		    UserName=configFile.getProperty("USERNAME");
 		    Password=configFile.getProperty("PASSWORD");
+		    TestDataFile=configFile.getProperty("TEST_DATA_FILE");
 		    
 		    logger.info("GeckoDriver_MAC  " + GeckoDriver_MAC);
 		    logger.info("GeckoDriver_WIN  " + GeckoDriver_WIN);
@@ -63,6 +65,7 @@ public class GlobalDataStore {
 		    logger.info("ChromeDriver_MAC " + ChromeDriver_MAC);
 		    logger.info("ChromeDriver_WIN " + ChromeDriver_WIN);
 		    logger.info("Guru99HomePage   " + Guru99HomePage);
+		    logger.info("TestDataFile     " + TestDataFile);
 		
 		    
 		

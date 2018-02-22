@@ -1,9 +1,11 @@
 package com.examples.pages;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
 import com.guru99.framework.Guru99WebDriverImpl;
@@ -25,6 +27,8 @@ public class Guru99LoginPage {
 	By logOut = By.linkText("Log out");
 	By seleniumDropdown = By.partialLinkText("Selenium");
 	By tableDemo = By.linkText("Table Demo");
+	By checkSiblings=By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[1]/following-sibling::li");
+	By checkSeleniumDropDown=By.xpath("//ul[@class='nav navbar-nav']/li[1]/a[1]");
 	//By clickTableDemo = By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[3]/a[contains(text(),'Table Demo')]");
 	
 	GlobalDataStore gds = new GlobalDataStore();
@@ -45,7 +49,16 @@ public class Guru99LoginPage {
 		logger.info("url " + currentUrl);
 		return currentUrl;
 	}
-
+	
+	public int getCountOfAllLinks(){
+	     WebElement element= driver.FindElement(checkSeleniumDropDown);
+	     
+	     driver.clickElement(element);
+	      List<WebElement>elements= driver.FindElements(checkSiblings);
+	      System.out.println("The elements Size " +elements.size());
+	      return elements.size();
+	     
+	    }
 	public void clickSeleniumDropDown() {
 		logger.info("clickSeleniumDropDown ");
 		driver.clickElement(driver.FindElement(seleniumDropdown));

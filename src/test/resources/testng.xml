@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Group of group Suite" verbose="1">
 	<parameter name="BrowserName" value="FireFox" />
-	<test name="Guru99HomePage">
+	<test name="Guru99LoginPage">
 		<classes>
 		
 			<class name="com.guru99.tests.Test99GuruLoginPage" />

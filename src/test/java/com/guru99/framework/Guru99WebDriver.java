@@ -1,5 +1,7 @@
 package com.guru99.framework;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,6 +15,8 @@ public interface Guru99WebDriver {
 	 
 	   void acceptPopAlert();
 	   WebElement FindElement(By element );
+	   
+	   public List<WebElement> FindElements(By element);
 	    /**
 	     * Quits the web driver.
 	     */

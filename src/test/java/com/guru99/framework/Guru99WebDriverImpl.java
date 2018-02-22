@@ -1,5 +1,6 @@
 package com.guru99.framework;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
@@ -178,6 +179,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	}
 
 	public String getCurrentUrl() {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 		String currentUrl = driver.getCurrentUrl();
 		return currentUrl;
 	}
@@ -201,7 +203,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	@Override
 	public WebElement FindElement(By element) {
 		System.out.println(" Coming in Find Element");
-	//	WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 20);
 
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -215,6 +217,12 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 		else {
 			return null;
 		}
+	}
+	
+	
+	public List<WebElement> FindElements(By element) {
+
+		return driver.findElements(element);
 	}
 
 	@Override

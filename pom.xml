@@ -35,30 +35,30 @@
 				</configuration>
 			</plugin>
 			<plugin>
-            <artifactId>maven-clean-plugin</artifactId>
-            <version>3.0.0</version>
-            <executions>
-                <execution>
-                    <id>auto-clean</id>
-                    <phase>clean</phase>
-                    <goals>
-                        <goal>clean</goal>
-                    </goals>
-                    <configuration>
-                        <filesets>
-                            <fileset>
-                                <directory>${basedir}</directory>
-                                <includes>
-                                <include>**/log/** </include>
-                                <include>**/target/** </include>
-                               </includes>
-                            </fileset>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>auto-clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${basedir}</directory>
+									<includes>
+										<include>**/log/** </include>
+										<include>**/target/** </include>
+									</includes>
+								</fileset>
 
-                        </filesets>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -78,6 +78,16 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.13</version>
 		</dependency>
 	</dependencies>
 </project>
