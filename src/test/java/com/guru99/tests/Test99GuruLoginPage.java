@@ -71,8 +71,10 @@ public class Test99GuruLoginPage {
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
 
-			// login to application objHomePage.loginToGuru(Username, Psswd);
-			Assert.assertTrue(objHomePage.getLogoutButton()); // Logout
+			// login to application 
+			objHomePage.loginToGuru(Username, Psswd);
+			Assert.assertTrue(objHomePage.getLogoutButton()); 
+			// Logout
 			objHomePage.clickLogout();
 
 		}
@@ -141,9 +143,7 @@ public class Test99GuruLoginPage {
 
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			System.out.println(" The FilePath " + FilePath);
-			// gds.setLogCategory("GURU99_LOGINTESTS");
 			 logger.info("testGuru99LoginExcel - In testGuru99Login Method ");
-			String loginTitle = null;
 			// ExcelUtils.setExcelFile(FilePath, "sheet1");
 			driver.navigateTo(BankHomePage);
 			// strUserName= ExcelUtils.getCellData(1,1);
@@ -154,8 +154,10 @@ public class Test99GuruLoginPage {
 			System.out.println("testGuru99LoginExcel - The password from Excel " + sPassword);
 			objHomePage.loginToGuru(sUserName, sPassword);
 			// loginTitle=objHomePage.
-			System.out.println("testGuru99LoginExcel - The login Title " + loginTitle);
-			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
+			System.out.println("testGuru99LoginExcel - The login Title " + loginPageTitle);
+			Assert.assertTrue(objHomePage.getLogoutButton()); 
+			// Logout
+			objHomePage.clickLogout();
 		}
 	}
 
