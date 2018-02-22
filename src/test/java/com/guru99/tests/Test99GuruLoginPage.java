@@ -87,7 +87,8 @@ public class Test99GuruLoginPage {
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
 
-			// login to application objHomePage.loginToGuru(Username, Psswd);
+			// login to application 
+			objHomePage.loginToGuru(Username, Psswd);
 			objHomePage.clickLogout();
 			Assert.assertTrue(objHomePage.checkForStepsToGenerateAccess());
 
