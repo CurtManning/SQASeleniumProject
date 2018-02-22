@@ -78,7 +78,7 @@ public class Test99GuruLoginPage {
 		}
 
 	}
-/*
+
 	@Test
 	public void test_Logout() {
 
@@ -97,7 +97,7 @@ public class Test99GuruLoginPage {
 		// .//*[@id='navbar-brand-centered']/ul/li[1]/ul/li[3]/a
 
 	}
-*/
+
 	@Test
 	void test_menu() {
 
@@ -106,9 +106,11 @@ public class Test99GuruLoginPage {
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
 
-			// login to application objHomePage.clickSeleniumDropDown();
+			// login to application 
+			objHomePage.clickSeleniumDropDown();
 			objHomePage.clickTableDemo();
 			String demoSiteUrl = objHomePage.getURL();
+			System.out.println(demoSiteUrl);
 			Assert.assertTrue(demoSiteUrl.contains("http://demo.guru99.com/test/table.html"));
 
 		}

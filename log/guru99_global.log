@@ -118,3 +118,27 @@ INFO main GURU99_GLOBAL - ChromeDriver_MAC /drivers/chromedriver
 INFO main GURU99_GLOBAL - ChromeDriver_WIN /drivers/chromedriver.exe
 INFO main GURU99_GLOBAL - Guru99HomePage   http://demo.guru99.com/v4/index.php
 INFO main GURU99_GLOBAL - TestDataFile     TestData.xlsx
+INFO main GURU99_GLOBAL -  initParameters 
+INFO main GURU99_GLOBAL - GeckoDriver_MAC  /drivers/geckodriver
+INFO main GURU99_GLOBAL - GeckoDriver_WIN  /drivers/geckodriver.exe
+INFO main GURU99_GLOBAL - HomePage         http://www.facebook.com
+INFO main GURU99_GLOBAL - ChromeDriver_MAC /drivers/chromedriver
+INFO main GURU99_GLOBAL - ChromeDriver_WIN /drivers/chromedriver.exe
+INFO main GURU99_GLOBAL - Guru99HomePage   http://demo.guru99.com/v4/index.php
+INFO main GURU99_GLOBAL - TestDataFile     TestData.xlsx
+INFO main GURU99_GLOBAL -  initParameters 
+INFO main GURU99_GLOBAL - GeckoDriver_MAC  /drivers/geckodriver
+INFO main GURU99_GLOBAL - GeckoDriver_WIN  /drivers/geckodriver.exe
+INFO main GURU99_GLOBAL - HomePage         http://www.facebook.com
+INFO main GURU99_GLOBAL - ChromeDriver_MAC /drivers/chromedriver
+INFO main GURU99_GLOBAL - ChromeDriver_WIN /drivers/chromedriver.exe
+INFO main GURU99_GLOBAL - Guru99HomePage   http://demo.guru99.com/v4/index.php
+INFO main GURU99_GLOBAL - TestDataFile     TestData.xlsx
+INFO main GURU99_GLOBAL -  initParameters 
+INFO main GURU99_GLOBAL - GeckoDriver_MAC  /drivers/geckodriver
+INFO main GURU99_GLOBAL - GeckoDriver_WIN  /drivers/geckodriver.exe
+INFO main GURU99_GLOBAL - HomePage         http://www.facebook.com
+INFO main GURU99_GLOBAL - ChromeDriver_MAC /drivers/chromedriver
+INFO main GURU99_GLOBAL - ChromeDriver_WIN /drivers/chromedriver.exe
+INFO main GURU99_GLOBAL - Guru99HomePage   http://demo.guru99.com/v4/index.php
+INFO main GURU99_GLOBAL - TestDataFile     TestData.xlsx
