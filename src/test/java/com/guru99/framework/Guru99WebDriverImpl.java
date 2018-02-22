@@ -179,7 +179,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	}
 
 	public String getCurrentUrl() {
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		String currentUrl = driver.getCurrentUrl();
 		return currentUrl;
 	}
@@ -203,7 +203,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	@Override
 	public WebElement FindElement(By element) {
 		System.out.println(" Coming in Find Element");
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -222,6 +222,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	
 	public List<WebElement> FindElements(By element) {
 
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		return driver.findElements(element);
 	}
 
