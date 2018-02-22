@@ -64,7 +64,7 @@ public class Test99GuruLoginPage {
 	}
 
 	@Test
-	public void test_Log_In() {
+	public void test_Login() {
 
 		if (HomePageLaunch == true) {
 
@@ -138,45 +138,24 @@ public class Test99GuruLoginPage {
 	public void testGuru99LoginExcel(String sUserName, String sPassword) throws Exception {
 		if (HomePageLaunch == true) {
 
-			System.out.println("DID I GET HERE?");
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
-			System.out.println("HERE? The FilePath " + FilePath);
+			System.out.println(" The FilePath " + FilePath);
 			// gds.setLogCategory("GURU99_LOGINTESTS");
-			// logger.info("-----In testGuru99Login Method ");
+			 logger.info("testGuru99LoginExcel - In testGuru99Login Method ");
 			String loginTitle = null;
-			System.out.println("----- The FilePath " + FilePath);
 			// ExcelUtils.setExcelFile(FilePath, "sheet1");
 			driver.navigateTo(BankHomePage);
 			// strUserName= ExcelUtils.getCellData(1,1);
-			// logger.info("----- The userName from Excel " +sUserName);
-			System.out.println("----- The userName from Excel " + sUserName);
+			logger.info("testGuru99LoginExcel - The userName from Excel " +sUserName);
+			System.out.println("testGuru99LoginExcel - The userName from Excel " + sUserName);
 			// strPassword = ExcelUtils.getCellData(1,2);
-			// logger.info("---- The password from Excel " +sPassword);
-			System.out.println("---- The password from Excel " + sPassword);
+			logger.info("testGuru99LoginExcel - The password from Excel " +sPassword);
+			System.out.println("testGuru99LoginExcel - The password from Excel " + sPassword);
 			objHomePage.loginToGuru(sUserName, sPassword);
 			// loginTitle=objHomePage.
-			System.out.println("---- The login Title " + loginTitle);
+			System.out.println("testGuru99LoginExcel - The login Title " + loginTitle);
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
 		}
-	}
-
-	@Test(dataProvider = "Authentication")
-	public void testGuru99Login(String sUserName, String sPassword) throws Exception {
-		logger.info("In Test Login Method ");
-		// String loginTitle = null;
-		System.out.println(" The FilePath " + FilePath);
-		// ExcelUtils.setExcelFile(FilePath, "sheet1");
-		driver.navigateTo(BankHomePage);
-
-		logger.info(" The userName from Excel " + sUserName);
-
-		logger.info(" The password from Excel " + sPassword);
-
-		objHomePage.loginToGuru(sUserName, sPassword);
-		String loginPageTitle = objHomePage.getHomePageDashboardName();
-		System.out.println(" loginPageTitle " + loginPageTitle);
-
-		Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
 	}
 
 	@DataProvider
