@@ -43,7 +43,6 @@ public class ExcelUtils {
 				for (int j = startCol; j <= totalCols; j++, cj++) {
 
 					tabArray[ci][cj] = getCellData(i, j);
-
 					System.out.println(tabArray[ci][cj]);
 
 				}
@@ -57,7 +56,6 @@ public class ExcelUtils {
 		{
 
 			System.out.println("Could not read the Excel sheet");
-
 			e.printStackTrace();
 
 		}
@@ -67,7 +65,6 @@ public class ExcelUtils {
 		{
 
 			System.out.println("Could not read the Excel sheet");
-
 			e.printStackTrace();
 
 		}
@@ -81,9 +78,7 @@ public class ExcelUtils {
 		try {
 
 			Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
-
 			String CellData = Cell.getStringCellValue();
-
 			return CellData;
 
 		} catch (Exception e) {

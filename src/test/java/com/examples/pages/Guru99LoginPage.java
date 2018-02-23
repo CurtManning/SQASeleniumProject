@@ -27,15 +27,22 @@ public class Guru99LoginPage {
 	By logOut = By.linkText("Log out");
 	By seleniumDropdown = By.partialLinkText("Selenium");
 	By tableDemo = By.linkText("Table Demo");
-	By checkSiblings=By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[1]/following-sibling::li");
-	By checkSeleniumDropDown=By.xpath("//ul[@class='nav navbar-nav']/li[1]/a[1]");
-	//By clickTableDemo = By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[3]/a[contains(text(),'Table Demo')]");
-	
+	By checkSiblings = By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[1]/following-sibling::li");
+	By checkSeleniumDropDown = By.xpath("//ul[@class='nav navbar-nav']/li[1]/a[1]");
+	// By clickTableDemo = By.xpath("//ul[@class='nav
+	// navbar-nav']/li[1]/ul/li[3]/a[contains(text(),'Table Demo')]");
+	By getUserId = By.xpath("//form/table/tbody/tr[1]/td[1]");
+	By checkStepsToGenerateAccess = By
+			.xpath("//form[@name='frmLogin']/following-sibling::h4/span[text()='Steps To Generate Access']");
+	By loginPageList = By.xpath("//h4[@class='barone']/following-sibling::div/*/li");
+	By loginReset = By
+			.xpath("//td[contains(text(),'UserID')]//parent::tr/following-sibling::tr//input[contains(@name, 'btn')]");
 	GlobalDataStore gds = new GlobalDataStore();
 	WebDriver driverInstance;
 
 	public static String LogCategory;
 	public static Logger logger;
+
 	public void setLogCategory(String LogFile) {
 
 		LogCategory = LogFile;
@@ -43,22 +50,46 @@ public class Guru99LoginPage {
 		logger = Logger.getLogger(LogCategory);
 
 	}
-	
+
+	public int getLoginReset() {
+		List<WebElement> lrElements = driver.FindElements(loginReset);
+		return lrElements.size();
+	}
+
+	public int getLoginPageList() {
+		List<WebElement> elements = driver.FindElements(loginPageList);
+		return elements.size();
+	}
+
+	public boolean ckForStepsToGenerateAccess() {
+		boolean ckstepsToGenerateEnabled = driver.FindElement(checkStepsToGenerateAccess).isEnabled();
+		Reporter.log("Guru99HomePage ckForStepsToGenerateAccess is pressent : " + ckstepsToGenerateEnabled, true);
+		logger.info(" ckForStepsToGenerateAccess is pressent : " + ckstepsToGenerateEnabled);
+		return ckstepsToGenerateEnabled;
+	}
+
+	public String getUserID() {
+		String usrId = driver.FindElement(getUserId).getText();
+		logger.info("userId " + usrId);
+		return usrId;
+	}
+
 	public String getURL() {
 		String currentUrl = driver.getCurrentUrl();
 		logger.info("url " + currentUrl);
 		return currentUrl;
 	}
-	
-	public int getCountOfAllLinks(){
-	     WebElement element= driver.FindElement(checkSeleniumDropDown);
-	     
-	     driver.clickElement(element);
-	      List<WebElement>elements= driver.FindElements(checkSiblings);
-	      System.out.println("The elements Size " +elements.size());
-	      return elements.size();
-	     
-	    }
+
+	public int getCountOfAllLinks() {
+		WebElement element = driver.FindElement(checkSeleniumDropDown);
+
+		driver.clickElement(element);
+		List<WebElement> elements = driver.FindElements(checkSiblings);
+		System.out.println("The elements Size " + elements.size());
+		return elements.size();
+
+	}
+
 	public void clickSeleniumDropDown() {
 		logger.info("clickSeleniumDropDown ");
 		driver.clickElement(driver.FindElement(seleniumDropdown));

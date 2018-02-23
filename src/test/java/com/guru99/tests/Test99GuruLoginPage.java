@@ -8,7 +8,10 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebElement;
 
 import com.examples.config.GlobalDataStore;
 import com.examples.pages.Guru99LoginPage;
@@ -70,7 +73,9 @@ public class Test99GuruLoginPage {
 
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
-
+			String uID = objHomePage.getUserID();
+			System.out.println("------------userID" + uID);
+			Assert.assertTrue(uID.trim().contains("UserID")); 
 			// login to application 
 			objHomePage.loginToGuru(Username, Psswd);
 			Assert.assertTrue(objHomePage.getLogoutButton()); 
@@ -93,6 +98,15 @@ public class Test99GuruLoginPage {
 			objHomePage.loginToGuru(Username, Psswd);
 			objHomePage.clickLogout();
 			Assert.assertTrue(objHomePage.checkForStepsToGenerateAccess());
+			System.out.println("ckForStepsToGenerateAccess-----------");
+			Assert.assertTrue(objHomePage.ckForStepsToGenerateAccess());
+			int size = objHomePage.getLoginPageList();
+			String strSize = Integer.toString(size);
+			Assert.assertTrue(strSize.contains("4"));
+			int LoginResetSize = objHomePage.getLoginReset();
+			String strLoginResetSize = Integer.toString(LoginResetSize);
+			Assert.assertTrue(strLoginResetSize.contains("2"));
+			
 
 		}
 
