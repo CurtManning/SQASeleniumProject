@@ -1,5 +1,7 @@
 package com.guru99.framework;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -13,13 +15,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.examples.config.GlobalDataStore;
 
-public class Guru99WebDriverImpl implements Guru99WebDriver {
+public class Guru99WebDriverImpl implements Guru99WebDriver { 
+	  public static final String USERNAME = "CMann4Ski";
+	  public static final String ACCESS_KEY = "053073a5-1943-4e76-a12f-a8e68ce05dc7";
+	  public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 	/**
 	 * Initialize the Web Driver.
 	 */
@@ -76,6 +83,29 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 			// GlobalDataStore.EDGE_DRIVER);
 			driver = new EdgeDriver();
 		}
+
+		// Log.info("END:init Method for Getting the Proper Drivers for
+		// Browser");
+		System.out.println("END:The webDriver Init Method");
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void initSauceLabs(String Browser) {
+
+		// Log.info("START:init Method for Getting the Proper Drivers for
+		// Browser");
+		System.out.println("The webDriver Init Method");
+		   DesiredCapabilities caps = DesiredCapabilities.chrome();
+		    caps.setCapability("browserName", "chrome");
+		    caps.setCapability("platform", "Windows 10");
+		    caps.setCapability("version", "63");
+		    
+		    try {
+				driver = new RemoteWebDriver(new URL(URL), caps);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 		// Log.info("END:init Method for Getting the Proper Drivers for
 		// Browser");
@@ -203,12 +233,12 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	@Override
 	public WebElement FindElement(By element) {
 		System.out.println(" Coming in Find Element");
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	//	 WebDriverWait wait = new WebDriverWait(driver,20 /* timeout in seconds */);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	//	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-	//	WebElement clickableElement =
-	//	 wait.until(ExpectedConditions.elementToBeClickable(element));
+	//	WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
 		if (driver.findElement(element).isDisplayed()) {
 			System.out.println("The element exists");
 			return driver.findElement(element);
@@ -222,7 +252,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	
 	public List<WebElement> FindElements(By element) {
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return driver.findElements(element);
 	}
 

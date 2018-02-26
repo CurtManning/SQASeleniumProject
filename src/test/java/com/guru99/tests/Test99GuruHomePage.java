@@ -1,5 +1,7 @@
 package com.guru99.tests;
 
+import java.net.MalformedURLException;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -26,7 +28,7 @@ public class Test99GuruHomePage {
 
 	@Parameters({ "BrowserName" })
 	@BeforeClass
-	public void setUp(@Optional("FireFox") String BrowserName) {
+	public void setUp(@Optional("FireFox") String BrowserName) throws MalformedURLException {
 
 		gds.initParameters();
 		// calls the init Method in getWebDriverInstance and gets the WebDriverImpl

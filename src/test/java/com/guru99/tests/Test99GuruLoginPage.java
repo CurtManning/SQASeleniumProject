@@ -8,6 +8,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -41,7 +42,7 @@ public class Test99GuruLoginPage {
 
 	@Parameters({ "BrowserName" })
 	@BeforeClass
-	public void setUp(@Optional("FireFox") String BrowserName) {
+	public void setUp(@Optional("FireFox") String BrowserName) throws MalformedURLException {
 		gds.setLogCategory("GURU99_GLOBAL");
 
 		logger.info("START: In set-up Method");
@@ -145,7 +146,7 @@ public class Test99GuruLoginPage {
 			int count = objHomePage.getCountOfAllLinks();
 			System.out.println("count = " + count);
 			String countAsString = Integer.toString(count);
-			Assert.assertTrue(countAsString.contains("18"));
+			Assert.assertTrue(countAsString.contains("19"));
 
 		}
 

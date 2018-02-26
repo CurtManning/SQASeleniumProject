@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public interface Guru99WebDriver {
 	void init(String Browser);
+	void initSauceLabs(String Browser);
 	Boolean navigateTo(final String relativeURL);
 	 void sendKeys(WebElement element, String name);
 	   
