@@ -14,6 +14,8 @@ public class GlobalDataStore {
 	public static String Guru99HomePage;
 	public static String UserName;
 	public static String Password;
+	public static String SaucelabUserName;
+	public static String SaucelabAccessKey;
 	public static String GeckoDriver;
 	public static String GeckoDriver_MAC;
 	public static String GeckoDriver_WIN;
@@ -24,6 +26,7 @@ public class GlobalDataStore {
 	public static String LogCategory;
 	public static Logger logger;
 	
+
 	public void setLogCategory(String LogFile) {
 
 		LogCategory = LogFile;
@@ -55,6 +58,9 @@ public class GlobalDataStore {
 		    Guru99HomePage=configFile.getProperty("GURU99_HOMEPAGE");
 
 		    GeckoDriver=configFile.getProperty("GECKO_DRIVER");
+			SaucelabUserName=configFile.getProperty("SAUCELAB_USERNAME");
+			SaucelabAccessKey=configFile.getProperty("SAUCELAB_ACCESS_KEY");
+		    
 		    UserName=configFile.getProperty("USERNAME");
 		    Password=configFile.getProperty("PASSWORD");
 		    TestDataFile=configFile.getProperty("TEST_DATA_FILE");

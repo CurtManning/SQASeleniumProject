@@ -43,6 +43,7 @@ public class Test99GuruLoginPage {
 	@Parameters({ "BrowserName" })
 	@BeforeClass
 	public void setUp(@Optional("FireFox") String BrowserName) throws MalformedURLException {
+		
 		gds.setLogCategory("GURU99_GLOBAL");
 
 		logger.info("START: In set-up Method");
@@ -51,7 +52,6 @@ public class Test99GuruLoginPage {
 		// GlobalDataStore.setLogCategory("GURU99_TESTS");
 		// calls the init Method in getWebDriverInstance and gets the WebDriverImpl
 		// Object driver..
-
 		driver = Guru99WebDriverFactory.getWebDriverInstance(BrowserName);
 		BankHomePage = GlobalDataStore.Guru99HomePage;
 		Username = GlobalDataStore.UserName;
@@ -75,7 +75,6 @@ public class Test99GuruLoginPage {
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
 			String uID = objHomePage.getUserID();
-			System.out.println("------------userID" + uID);
 			Assert.assertTrue(uID.trim().contains("UserID")); 
 			// login to application 
 			objHomePage.loginToGuru(Username, Psswd);
@@ -86,7 +85,7 @@ public class Test99GuruLoginPage {
 		}
 
 	}
-
+/*
 	@Test
 	public void test_Logout() {
 
@@ -184,7 +183,7 @@ public class Test99GuruLoginPage {
 		return (testObjArray);
 
 	}
-
+*/
 	@AfterClass
 	public void afterClass() {
 		// Close

@@ -24,9 +24,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.examples.config.GlobalDataStore;
 
 public class Guru99WebDriverImpl implements Guru99WebDriver { 
-	  public static final String USERNAME = "CMann4Ski";
-	  public static final String ACCESS_KEY = "053073a5-1943-4e76-a12f-a8e68ce05dc7";
-	  public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+	
+
+	  
+
 	/**
 	 * Initialize the Web Driver.
 	 */
@@ -94,11 +95,16 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 
 		// Log.info("START:init Method for Getting the Proper Drivers for
 		// Browser");
+		  String USERNAME = GlobalDataStore.SaucelabUserName;
+		  String ACCESS_KEY = GlobalDataStore.SaucelabAccessKey;
+		  String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 		System.out.println("The webDriver Init Method");
+		String[] brArray = Browser.split(",");
 		   DesiredCapabilities caps = DesiredCapabilities.chrome();
-		    caps.setCapability("browserName", "chrome");
-		    caps.setCapability("platform", "Windows 10");
-		    caps.setCapability("version", "63");
+		    caps.setCapability("browserName", brArray[0]);
+		    caps.setCapability("platform",  brArray[1]);
+		    caps.setCapability("version", brArray[2]);
+		    
 		    
 		    try {
 				driver = new RemoteWebDriver(new URL(URL), caps);

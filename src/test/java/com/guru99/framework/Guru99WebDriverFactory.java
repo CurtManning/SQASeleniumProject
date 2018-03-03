@@ -15,8 +15,13 @@ public class Guru99WebDriverFactory {
 		// String BrowserName-"fireFox";
 
 		Guru99WebDriverImpl webDriver = new Guru99WebDriverImpl();
-		webDriver.init(BrowserName);
-		//webDriver.initSauceLabs(BrowserName); 
+		
+		if (BrowserName.split(",").length == 1) {
+			webDriver.init(BrowserName);
+		} else {
+			webDriver.initSauceLabs(BrowserName); 
+		}
+
 		return webDriver;
 	}
 
