@@ -1,14 +1,18 @@
 package com.guru99.tests;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -20,6 +24,11 @@ import com.examples.pages.Guru99ManagerHomePage;
 import com.guru99.framework.ExcelUtils;
 import com.guru99.framework.Guru99WebDriverFactory;
 import com.guru99.framework.Guru99WebDriverImpl;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+
 
 public class Test99GuruLoginPage {
 
@@ -32,21 +41,30 @@ public class Test99GuruLoginPage {
 	String Username;
 	String Psswd;
 	String GecKoDriver;
-	String FilePath;
+	String ExtendReportsDirectoryPath;
+	String TestDataFilePath;
 	String baseDir;
 
 	String HomePage;
 	Boolean HomePageLaunch = false;
 	Guru99ManagerHomePage objManagerHomePage;
 	Guru99LoginPage objHomePage;
+	ExtentReports report;
+	ExtentTest test;
 
 	@Parameters({ "BrowserName" })
 	@BeforeClass
 	public void setUp(@Optional("FireFox") String BrowserName) throws MalformedURLException {
 		
+		baseDir = System.getProperty("user.dir");
+		ExtendReportsDirectoryPath = baseDir + "/" + "test-output/";
+		report = new ExtentReports(ExtendReportsDirectoryPath + "Test99GuruLoginPage.html");
 		gds.setLogCategory("GURU99_GLOBAL");
 
+		test = report.startTest("Verify Welcome Text");
+
 		logger.info("START: In set-up Method");
+		test.log(LogStatus.INFO, "START: In set-up Method");
 
 		gds.initParameters();
 		// GlobalDataStore.setLogCategory("GURU99_TESTS");
@@ -60,9 +78,10 @@ public class Test99GuruLoginPage {
 
 		objHomePage = new Guru99LoginPage();
 		objHomePage.setLogCategory("GURU99_TESTS");
+		objHomePage.setExtentReports(test);
 		objHomePage.setWebDriver(driver);
-		baseDir = System.getProperty("user.dir");
-		FilePath = baseDir + "/" + "src/test/resources/" + GlobalDataStore.TestDataFile;
+
+		TestDataFilePath = baseDir + "/" + "src/test/resources/" + GlobalDataStore.TestDataFile;
 		logger.info("END: In set-up Method");
 
 	}
@@ -74,16 +93,33 @@ public class Test99GuruLoginPage {
 
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
 			Assert.assertTrue(loginPageTitle.toLowerCase().contains("guru99 bank"));
+			//
+			objHomePage.checkClickableLinks();
 			String uID = objHomePage.getUserID();
+			
 			Assert.assertTrue(uID.trim().contains("UserID")); 
 			// login to application 
+			test.log(LogStatus.INFO, "Log into application");
 			objHomePage.loginToGuru(Username, Psswd);
-			Assert.assertTrue(objHomePage.getLogoutButton()); 
+
+			Assert.assertTrue(objHomePage.getLogoutButton());
+
 			// Logout
-			objHomePage.clickLogout();
+			objHomePage.clickLogout();	
 
 		}
 
+	}
+	
+	@AfterMethod
+	public void tearDown(ITestResult testResult) throws IOException {
+		if (testResult.getStatus() == ITestResult.FAILURE) {
+			
+			String path = driver.takeScreenshot(ExtendReportsDirectoryPath + testResult.getName());
+			System.out.println("Image Path " + path);
+			String imagePath = test.addScreenCapture(path);
+			test.log(LogStatus.FAIL, "Verify Welcome Text Failed", imagePath);
+		}
 	}
 /*
 	@Test
@@ -156,9 +192,9 @@ public class Test99GuruLoginPage {
 		if (HomePageLaunch == true) {
 
 			String loginPageTitle = objHomePage.getHomePageDashboardName();
-			System.out.println(" The FilePath " + FilePath);
+			System.out.println(" The TestDataFilePath " + TestDataFilePath);
 			 logger.info("testGuru99LoginExcel - In testGuru99Login Method ");
-			// ExcelUtils.setExcelFile(FilePath, "sheet1");
+			// ExcelUtils.setExcelFile(TestDataFilePath, "sheet1");
 			driver.navigateTo(BankHomePage);
 			// strUserName= ExcelUtils.getCellData(1,1);
 			logger.info("testGuru99LoginExcel - The userName from Excel " +sUserName);
@@ -178,15 +214,19 @@ public class Test99GuruLoginPage {
 	@DataProvider
 	public Object[][] Authentication() throws Exception {
 
-		Object[][] testObjArray = ExcelUtils.getTableArray(FilePath, "Sheet1");
+		Object[][] testObjArray = ExcelUtils.getTableArray(TestDataFilePath, "Sheet1");
 
 		return (testObjArray);
 
 	}
 */
+
 	@AfterClass
 	public void afterClass() {
+		
 		// Close
 		this.driver.quitDriver();
+		report.endTest(test);
+		report.flush();
 	}
 }

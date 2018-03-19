@@ -1,14 +1,21 @@
 package com.guru99.framework;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -116,6 +123,19 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 		// Log.info("END:init Method for Getting the Proper Drivers for
 		// Browser");
 		System.out.println("END:The webDriver Init Method");
+	}
+	
+	public String takeScreenshot(String directoryFileName) {
+		
+		directoryFileName = directoryFileName + ".png";
+		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(sourceFile, new File(directoryFileName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error in FileUtils.copyFile " + e.getStackTrace());
+		}
+		return directoryFileName;
 	}
 
 	public String OSDetector() {
@@ -261,6 +281,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		return driver.findElements(element);
 	}
+	
 
 	@Override
 	public void closeBrowser() {
@@ -269,5 +290,6 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 		this.driver.close();
 
 	}
+	
 
 }

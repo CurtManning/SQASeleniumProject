@@ -10,7 +10,7 @@
 	</test>
 	<test name="smoke">
 		<!--<parameter name="BrowserName" value="chrome,Windows 10,63" /> -->
-		<parameter name="BrowserName" value="Chrome" />
+		<parameter name="BrowserName" value="Chrome" /> 
 		<classes>
 			<class name="com.guru99.tests.Test99GuruLoginPage">
 			</class>
