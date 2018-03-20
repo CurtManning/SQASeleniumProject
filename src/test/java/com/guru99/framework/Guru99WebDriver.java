@@ -13,7 +13,7 @@ public interface Guru99WebDriver {
 
 	void initSauceLabs(String Browser);
 	
-	public String takeScreenshot(String directoryFileName);
+	public String takeScreenshot(String dirPathFileName);
 
 	Boolean navigateTo(final String relativeURL);
 

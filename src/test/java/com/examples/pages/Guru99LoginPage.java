@@ -31,7 +31,7 @@ public class Guru99LoginPage {
 
 	By passwordGuru = By.name("password");
 	By login = By.name("btnLogin");
-	By logOut = By.linkText("Log1out");    // Change "log out" to "log1out" to test screenprints 
+	By logOut = By.linkText("Log out");    // Change "log out" to "log1out" to test screenprints 
 	By seleniumDropdown = By.partialLinkText("Selenium");
 	By tableDemo = By.linkText("Table Demo");
 	By checkSiblings = By.xpath("//ul[@class='nav navbar-nav']/li[1]/ul/li[1]/following-sibling::li");

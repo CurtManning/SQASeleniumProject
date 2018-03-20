@@ -186,7 +186,7 @@ public class Test99GuruLoginPage {
 		}
 
 	}
-
+*/
 	@Test(dataProvider = "Authentication")
 	public void testGuru99LoginExcel(String sUserName, String sPassword) throws Exception {
 		if (HomePageLaunch == true) {
@@ -210,6 +210,8 @@ public class Test99GuruLoginPage {
 			objHomePage.clickLogout();
 		}
 	}
+	
+
 
 	@DataProvider
 	public Object[][] Authentication() throws Exception {
@@ -219,7 +221,7 @@ public class Test99GuruLoginPage {
 		return (testObjArray);
 
 	}
-*/
+
 
 	@AfterClass
 	public void afterClass() {

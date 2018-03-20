@@ -125,17 +125,17 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 		System.out.println("END:The webDriver Init Method");
 	}
 	
-	public String takeScreenshot(String directoryFileName) {
+	public String takeScreenshot(String dirPathFileName) {
 		
-		directoryFileName = directoryFileName + ".png";
+		dirPathFileName = dirPathFileName + ".png";
 		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		try {
-			FileUtils.copyFile(sourceFile, new File(directoryFileName));
+			FileUtils.copyFile(sourceFile, new File(dirPathFileName));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error in FileUtils.copyFile " + e.getStackTrace());
 		}
-		return directoryFileName;
+		return dirPathFileName;
 	}
 
 	public String OSDetector() {
