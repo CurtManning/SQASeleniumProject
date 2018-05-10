@@ -24,6 +24,7 @@ public class ExtentReporterNG implements IReporter {
     @Override
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
         extent = new ExtentReports(outputDirectory + File.separator + "ExtentReportsTestNG.html", true);
+        System.out.println(outputDirectory + File.separator + "ExtentReportsTestNG.html");
  
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> result = suite.getResults();
@@ -48,9 +49,8 @@ public class ExtentReporterNG implements IReporter {
             for (ITestResult result : tests.getAllResults()) {
                 test = extent.startTest(result.getMethod().getMethodName());
  
-          //      test.getTest().startedTime = getTime(result.getStartMillis());
-          //      test.getTest().endedTime = getTime(result.getEndMillis());
- 
+                test.getTest().setStartedTime(getTime(result.getStartMillis()));
+                test.getTest().setEndedTime(getTime(result.getEndMillis()));
                 for (String group : result.getMethod().getGroups())
                     test.assignCategory(group);
  

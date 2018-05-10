@@ -21,9 +21,10 @@ public class LoginTest {
      
 	    @BeforeSuite
 	    public void setUp() {
-	         
+			System.setProperty("webdriver.gecko.driver", 
+					"/Users/CurtA/Projects/personal/libs/geckodriver-v0.19.1-win64/geckodriver.exe");
 	        driver = new FirefoxDriver();
-	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	    }
 	     
 	    @Parameters({"incorrectusername","incorrectpassword"})
@@ -56,6 +57,6 @@ public class LoginTest {
 	    @AfterSuite
 	    public void tearDown() {
 	         
-	        driver.quit();
+	      //  driver.quit();
 	    }
 }

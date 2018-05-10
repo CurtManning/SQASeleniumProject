@@ -154,7 +154,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	}
 
 	public void sendKeys(WebElement element, String name) {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
+		WebDriverWait wait = new WebDriverWait(driver, 25);
 		WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
 
 		clickableElement.sendKeys(name);
@@ -164,7 +164,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	public void clickElement(WebElement element) {
 		 
 		 System.out.println("START: click Element value "+element);
-		 WebDriverWait wait = new WebDriverWait(driver, 20);
+		 WebDriverWait wait = new WebDriverWait(driver, 25);
 		 try {
 		       // System.out.println("The element is " +element.getText());
 		        
@@ -187,7 +187,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	
 	public void acceptPopAlert() {
 		 
-		 WebDriverWait wait = new WebDriverWait(driver,20 /* timeout in seconds */);
+		 WebDriverWait wait = new WebDriverWait(driver,25 /* timeout in seconds */);
 
 		 if (wait.until(ExpectedConditions.alertIsPresent()) == null)
 		  System.out.println("alert was not present");
@@ -215,7 +215,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 
 			// PageFactory.initElements(driver, TMXWebDriverImpl.class);
 
-			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 
 			this.driver.get(navigateUrl);
 			String CurrrentUrl = getCurrentUrl();
@@ -235,7 +235,7 @@ public class Guru99WebDriverImpl implements Guru99WebDriver {
 	}
 
 	public String getCurrentUrl() {
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 		String currentUrl = driver.getCurrentUrl();
 		return currentUrl;
 	}

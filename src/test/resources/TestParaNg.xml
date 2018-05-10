@@ -10,7 +10,7 @@
 	<parameter name="incorrectpassword" value="credentials" />
 	<test name="Login tests">
 		<packages>
-			<package name="com.ontestautomation.extentreports.tests" />
+			<package name="com.parasoft.parabank.tests" />
 		</packages>
 	</test>
 </suite>
