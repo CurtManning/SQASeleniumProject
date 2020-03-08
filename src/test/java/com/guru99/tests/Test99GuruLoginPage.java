@@ -70,6 +70,7 @@ public class Test99GuruLoginPage {
 		// GlobalDataStore.setLogCategory("GURU99_TESTS");
 		// calls the init Method in getWebDriverInstance and gets the WebDriverImpl
 		// Object driver..
+		test.log(LogStatus.INFO, "BROWSER: " + BrowserName);
 		driver = Guru99WebDriverFactory.getWebDriverInstance(BrowserName);
 		BankHomePage = GlobalDataStore.Guru99HomePage;
 		Username = GlobalDataStore.UserName;

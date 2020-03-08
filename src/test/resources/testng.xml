@@ -5,7 +5,8 @@
 		<listener class-name="com.parasoft.parabank.listener.ExtentReporterNG" />
 	</listeners>
 	<test name="Guru99LoginPage">
-		<parameter name="BrowserName" value="FireFox" />
+	<!-- Firefox not working <parameter name="BrowserName" value="FireFox" /> -->
+		<parameter name="BrowserName" value="Chrome" />
 		<classes>
 			<class name="com.guru99.tests.Test99GuruLoginPage" />
 		</classes>
