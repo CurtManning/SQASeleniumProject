@@ -63,14 +63,14 @@ public class Test99GuruLoginPage {
 
 		test = report.startTest("Verify Welcome Text");
 
-		logger.info("START: In set-up Method");
-		test.log(LogStatus.INFO, "START: In set-up Method");
+		logger.info("START: Test99GuruLoginPage - In set-up Method");
+		test.log(LogStatus.INFO, "START: Test99GuruLoginPage - In set-up Method");
 
 		gds.initParameters();
 		// GlobalDataStore.setLogCategory("GURU99_TESTS");
 		// calls the init Method in getWebDriverInstance and gets the WebDriverImpl
 		// Object driver..
-		test.log(LogStatus.INFO, "BROWSER: " + BrowserName);
+		test.log(LogStatus.INFO, "Test99GuruLoginPage - BROWSER: " + BrowserName);
 		driver = Guru99WebDriverFactory.getWebDriverInstance(BrowserName);
 		BankHomePage = GlobalDataStore.Guru99HomePage;
 		Username = GlobalDataStore.UserName;
